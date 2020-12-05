@@ -316,10 +316,12 @@ class Parser {
             text: "\n",
           ));
         }
-        var top = _stack.removeLast();
-        if (top.name != event.name) {
-          print("Malformed HTML");
-          return;
+        if (_stack.isNotEmpty) {
+          var top = _stack.removeLast();
+          if (top.name != event.name) {
+            print("Malformed HTML");
+            return;
+          }
         }
       }
 
